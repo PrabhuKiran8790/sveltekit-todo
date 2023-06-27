@@ -19,7 +19,6 @@
   function handleUserLogin(e) {
     let formData = new FormData(e.target);
     let data = Object.fromEntries(formData.entries());
-    console.log(data);
     loginWaiting = true;
     getToken(data.email, data.password)
       .then((result) => {
@@ -36,16 +35,13 @@
           userLoginRegisterFormModal.set(false);
           getAllTodos($token)
             .then((data) => {
-              console.log(data); // Handle the todo list data
               allTodos.set(data);
             })
             .catch((error) => {
-              console.log(error);
             });
         }
       })
       .catch((error) => {
-        console.error("Error:", error.message);
       });
   }
 </script>
