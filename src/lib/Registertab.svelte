@@ -25,7 +25,6 @@
     emailAlreadyExists = false;
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
 
     if (data.password.length < 8) {
       weakPassword.set(true);
@@ -34,7 +33,6 @@
 
     registrationWaiting = true;
     createUser(data).then((result) => {
-      console.log("result", result);
       if (result.detail === "Email already registered") {
         weakPassword.set(false);
         registrationWaiting = false;
@@ -47,11 +45,9 @@
         userLoginRegisterFormModal.set(false);
         getAllTodos($token)
           .then((data) => {
-            console.log(data); // Handle the todo list data
             allTodos.set(data);
           })
           .catch((error) => {
-            console.log(error);
           });
       }
     });
