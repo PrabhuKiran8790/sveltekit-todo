@@ -24,22 +24,17 @@
     let formdata = new FormData(e.target);
     let data = Object.fromEntries(formdata.entries());
     data["status"] = false;
-    console.log(data);
 
     createTodo($token, data)
       .then((data) => {
-        console.log(data); // Handle the response data
         getAllTodos($token)
           .then((data) => {
-            console.log(data); // Handle the todo list data
             $allTodos = data;
           })
           .catch((error) => {
-            console.error(error);
           });
       })
       .catch((error) => {
-        console.error(error); // Handle any errors that occurred during the request
       });
   }
 </script>
