@@ -74,25 +74,20 @@
     let formdata = new FormData(e.target);
     let data = Object.fromEntries(formdata.entries());
     data["status"] = false;
-    console.log("todo_id", todo_id);
-    console.log(data);
 
     updateTodo($token, $updateInfo.todo_id, data)
       .then((data) => {
         console.log(data);
         getAllTodos($token)
           .then((data) => {
-            console.log(data); // Handle the todo list data
             $allTodos = data;
             updateWaiting = false;
           })
           .catch((error) => {
-            console.error(error);
           });
         updateFormModal.set(false);
       })
       .catch((error) => {
-        console.error(error);
       });
   }
 
@@ -100,20 +95,16 @@
     deleteWaiting = true;
     deleteTodoById($token, id)
       .then((data) => {
-        console.log(data);
         getAllTodos($token)
           .then((data) => {
-            console.log(data); // Handle the todo list data
             $allTodos = data;
             deleteWaiting = false;
           })
           .catch((error) => {
-            console.error(error);
           });
         taskAction = false;
       })
       .catch((error) => {
-        console.error(error);
       });
   }
 </script>
