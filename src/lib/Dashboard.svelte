@@ -46,7 +46,6 @@
         compareDates(task.due_date) === "upcoming" &&
         task.status !== true
       ) {
-        console.log("task status: ", task.status);
         upcomingTasks.push(task);
       } else if (task.status === true) {
         completedTasks.push(task);
